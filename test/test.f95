@@ -1,9 +1,9 @@
-!Exclamation mark for comments
-!Indentation as two spaces
 PROGRAM test
   IMPLICIT NONE
-  INTEGER :: i, j, k !declare variables
-  i = 4
-  j = 9
-  PRINT *, i+j
-ENDPROGRAM test
+  REAL :: diameter, radius, area
+  REAL,PARAMETER :: pi=3.14
+  READ(*,*) diameter
+  radius = diameter/2
+  area = pi*(radius)**2
+  PRINT *, area
+END PROGRAM test
