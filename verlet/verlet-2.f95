@@ -33,18 +33,20 @@ PROGRAM verlet2
     f(i, :) = [0.0_wp, 0.1_wp, 0.0_wp]
   ENDDO
 
-  ! calculate verlet algorithm
+  ! calculate verlet algorithm and write to output file
+
+  OPEN(UNIT=12, FILE="verlet.out", STATUS="replace", ACTION="write")
 
   DO k = 1, nk
-    PRINT*, "---- k=", k, "----"
+    WRITE(UNIT=12, FMT=*) "---- k=", k
     DO i=1, num
       x(i, 2:4) = x(i, 2:4) + tau * v(i, :) + tau**2.0 * (f(i, :)/(2.0*mass(i)))
       fnext = f
       v(i, :) = v(i, :) + tau/(2.0*mass(i)) * (f(i, :) + fnext(i, :))
-      PRINT*, x(i, :)
+      WRITE(UNIT=12, FMT=*) x(i, :)
     ENDDO
   ENDDO
 
-
+  CLOSE(12)
 
 ENDPROGRAM
