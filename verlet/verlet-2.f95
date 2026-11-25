@@ -13,11 +13,7 @@ PROGRAM verlet2
   READ(UNIT=11, FMT=*) nk, tau
   READ(UNIT=11, FMT=*) num
   
-  ALLOCATE( x(num, 3) )
-  ALLOCATE( v(num, 3) )
-  ALLOCATE( f(num, 3) )
-  ALLOCATE( fnext(num, 3) )
-  ALLOCATE( mass(num) )
+  ALLOCATE( x(num, 3), v(num, 3), f(num, 3), fnext(num, 3), mass(num) )
 
   DO i=1, num
     READ(UNIT=11, FMT=*) mass(i), x(i, 1), x(i, 2), x(i, 3), v(i, 1), v(i, 2), v(i, 3)
